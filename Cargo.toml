@@ -1,0 +1,5 @@
+[package]
+
+name = "txtdist"
+version = "0.0.1"
+authors = ["Kim Sevandersson <ksevandersson@gmail.com>"]
