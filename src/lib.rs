@@ -2,9 +2,7 @@
 #![feature(core)]
 #![feature(test)]
 
-//! Txtdist is small crate for calculating the distance between two strings.
-//! currently only supports the damerau levenshtein algorithm. 
-//!
+//! Txtdist is small utility crate for calculating the distance between two strings.
 
 extern crate test;
 
@@ -12,9 +10,10 @@ use std::collections::VecMap;
 use std::iter::range_inclusive;
 use std::cmp::min;
 
-/// Calculate the distance between two strings using the damerau levenshtein algorithm.
+/// Calculate the distance between two strings using the damerau levenshtein algorithm. 
 /// 
 /// 
+///
 /// > The Damerau–Levenshtein distance (named after Frederick J. Damerau and Vladimir I. Levenshtein) 
 /// > is a distance (string metric) between two strings, i.e., finite sequence of symbols, 
 /// > given by counting the minimum number of operations needed to transform one string into the other, 
