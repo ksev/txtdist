@@ -1,13 +1,6 @@
-#![feature(collections)]
-#![feature(core)]
-#![feature(test)]
-
 //! Txtdist is small utility crate for calculating the distance between two strings.
 
-extern crate test;
-
-use std::collections::VecMap;
-use std::iter::range_inclusive;
+use std::collections::BTreeMap;
 use std::cmp::min;
 
 /// Calculate the distance between two strings using the damerau levenshtein algorithm. 
@@ -44,23 +37,23 @@ pub fn damerau_levenshtein(source: &str, target: &str) -> u32 {
     let mut matrix = vec![vec![0; m+2]; n+2];
 
     matrix[0][0] = inf;
-    for i in range_inclusive(0, n) {
+    for i in 0..n+1 {
         matrix[i+1][0] = inf;
         matrix[i+1][1] = i;
     }
-    for j in range_inclusive(0, m) {
+    for j in 0..m+1 {
         matrix[0][j+1] = inf;
         matrix[1][j+1] = j;
     };
 
-    let mut last_row = VecMap::new();
+    let mut last_row = BTreeMap::new();
 
-    for row in range_inclusive(1, n) {
-        let char_s = source.char_at(row-1);
+    for (row, char_s) in source.chars().enumerate() {
         let mut last_match_col = 0;
+        let row = row + 1;
         
-        for col in range_inclusive(1, m) {
-            let char_t = target.char_at(col-1);
+        for (col, char_t) in target.chars().enumerate() {
+            let col = col + 1;
             let last_match_row = *last_row.get(&(char_t as usize)).unwrap_or(&0);
             let cost = if char_s == char_t { 0 } else { 1 };
 
@@ -90,7 +83,6 @@ pub fn damerau_levenshtein(source: &str, target: &str) -> u32 {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use test::Bencher;
 
     #[test]
     fn test_damerau_levenschtein() {
@@ -113,6 +105,7 @@ mod tests {
         assert_eq!(distance, 0);
     }
 
+    /*
     #[bench]
     fn bench_damerau_levenschtein(b: &mut Bencher) {
         b.iter(|| damerau_levenshtein("one string", "other string"));
@@ -132,4 +125,5 @@ mod tests {
     fn bench_damerau_levenschtein_same(b: &mut Bencher) {
         b.iter(|| damerau_levenshtein("some string", "some string"));
     }
+    */
 }
