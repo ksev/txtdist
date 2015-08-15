@@ -160,7 +160,7 @@ pub fn damerau_levenshtein(source: &str, target: &str) -> u32 {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use test::Bencher;
+    //use test::Bencher;
 
     #[test]
     fn test_levenschtein() {
