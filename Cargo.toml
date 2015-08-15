@@ -1,5 +1,10 @@
 [package]
 
 name = "txtdist"
-version = "0.0.2"
+version = "0.2.0"
 authors = ["Kim Sevandersson <ksevandersson@gmail.com>"]
+keywords = ["text", "text-distance", "levenshtein", "damerau-levenshtein"]
+license = "MIT"
+homepage = "http://github.com/ksev/txtdist"
+repository = "http://github.com/ksev/txtdist"
+description = "A library for mesuring the distance between texts."
