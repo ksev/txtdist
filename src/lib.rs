@@ -55,6 +55,13 @@ impl<T> IndexMut<(usize, usize)> for N2Array<T> {
 pub fn levenshtein(source: &str, target: &str) -> u32 {
     let (n, m) = (source.len(), target.len());
 
+    if n == 0 { return m as u32; }
+    if m == 0 { return n as u32; }
+
+    if n == m && source == target {
+        return 0;
+    }
+
     let mut matrix = N2Array::new(n+1, m+1, 0);
 
     for i in 1..n+1 {
@@ -178,6 +185,9 @@ mod tests {
 
         let distance = levenshtein("string", "string");
         assert_eq!(distance, 0);
+
+        let distance = levenshtein("", "a cat");
+        assert_eq!(distance, 5);
     }
 
     #[test]
