@@ -1,7 +1,7 @@
 # txtdist
 A library for mesuring the distance between two strings.
 
-Currently has the Damerau-Levenschtein algorithm, so only one function.
+Currently has the Damerau-Levenschtein and Levenschtein algorithm, so only two functions.
 
 ```rust
 extern crate txtdist;
