@@ -1,8 +1,9 @@
 //! Txtdist is small utility crate for calculating the distance between two strings.
 
+/*
 #![feature(test)]
-
 extern crate test;
+*/
 
 use std::ops::{ Index, IndexMut };
 use std::collections::BTreeMap;
@@ -199,7 +200,7 @@ mod tests {
         let distance = damerau_levenshtein("some string", "some string");
         assert_eq!(distance, 0);
     }
-
+    /*
     #[bench]
     fn bench_damerau_levenschtein(b: &mut Bencher) {
         b.iter(|| damerau_levenshtein("one string", "other string"));
@@ -256,5 +257,5 @@ mod tests {
         ";
 
         b.iter(|| damerau_levenshtein(text1, text2))
-    }
+    }*/
 }
